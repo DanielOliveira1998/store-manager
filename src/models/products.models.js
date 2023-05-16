@@ -1,9 +1,10 @@
 const connection = require('./connection');
 
 const findAll = async () => {
-  const [products] = await connection.execute(
+  const result = await connection.execute(
     'SELECT * FROM StoreManager.products GROUP BY id ORDER BY id;',
   );
+  const [products] = result;
   return products;
 };
 
