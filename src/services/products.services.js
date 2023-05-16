@@ -10,4 +10,10 @@ const findProductById = async (id) => {
   return product;
 };
 
-module.exports = { findAllProducts, findProductById };
+const createProduct = async (name) => {
+  console.log('entrei'); 
+  const product = await productsModel.create(name);
+  return product;
+};
+
+module.exports = { findAllProducts, findProductById, createProduct };
