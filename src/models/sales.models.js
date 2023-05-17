@@ -21,6 +21,17 @@ const referSaleToProduct = async (saleInfo) => {
   };
 };
 
+const updateSale = async (id, bodyInfo) => {
+  await Promise.all(bodyInfo.map((item) => connection.execute(
+    `UPDATE StoreManager.sales_products SET quantity = ?
+    WHERE sale_id = ? AND product_id = ?`, [item.quantity, id, item.productId],
+  )));
+  return {
+    saleId: id,
+    itemsUpdated: bodyInfo,
+  };
+};
+
 const findAll = async () => {
   const result = await connection.execute(
     `SELECT date, product_id, quantity, id AS saleId FROM StoreManager.sales
@@ -46,4 +57,4 @@ const exclude = async (saleId) => {
   return affectedRows;
 };
 
-module.exports = { referSaleToProduct, findAll, findById, exclude };
+module.exports = { referSaleToProduct, findAll, findById, exclude, updateSale };

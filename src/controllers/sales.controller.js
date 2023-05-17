@@ -26,4 +26,14 @@ const excludeSale = async (req, res) => {
   return res.status(204).json();
 };
 
-module.exports = { addSaleProduct, listSales, saleById, excludeSale };
+const updateList = async (req, res) => {
+  const { id } = req.params;
+  const bodyInfo = req.body;
+  const sale = await saleService.updateSale(id, bodyInfo);
+  const oldSale = await saleService.findSaleById(id);
+  console.log(oldSale);
+  if (oldSale[0].length === 0) return res.status(404).json({ message: 'Sale not found' });
+  return res.status(200).json(sale);
+};
+
+module.exports = { addSaleProduct, listSales, saleById, excludeSale, updateList };

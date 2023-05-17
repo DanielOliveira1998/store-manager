@@ -22,4 +22,9 @@ const excludeSale = async (saleId) => {
   return deletedSale;
 };
 
-module.exports = { createSale, findAllSales, findSaleById, excludeSale };
+const updateSale = async (id, bodyInfo) => {
+  const result = await salesModel.updateSale(id, bodyInfo);
+  return result;
+};
+
+module.exports = { createSale, findAllSales, findSaleById, excludeSale, updateSale };
