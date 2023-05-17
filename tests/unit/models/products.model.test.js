@@ -20,5 +20,10 @@ describe('Products Test', () => {
       expect(result).to.be.deep.equal(productsListMock[0]);
       sinon.restore()
     })
+    it('create retorna o produto criado', async () => {
+      sinon.stub(connection, 'execute').resolves([{ insertId: 20 }]);
+      const result = await productModel.create('Novo produto');
+      expect(result).to.be.deep.equal({ id: 20, name: 'Novo produto' })
+    })
   });
 });

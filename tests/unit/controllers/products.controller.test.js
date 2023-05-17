@@ -35,6 +35,21 @@ describe('Controller Test', () => {
       expect(res.status).to.have.been.calledWith(200);
       expect(res.json).to.have.been.calledWith({ type: null, message: productsListMock[0] });
     });
+
+    it('Verifica addCreatedProduct retorna status 201', async () => {
+      const req = {
+        body: 'Novo produto'
+      }
+      const res = {}
+      res.status = sinon.stub().returns(res);
+      res.json = sinon.stub().returns();
+      sinon.stub(productSevice, 'createProduct').resolves({
+        id: 20, name: 'Novo produto'
+      })
+      await productController.addCreatedProduct(req, res);
+      expect(res.status).to.have.been.calledWith(201);
+      expect(res.json).to.have.been.calledWith({ id: 20, name: 'Novo produto' })
+    })
   });
   describe('Verificas erros', async () => {
     it('Verifica se listProducts retorna status 404', async () => {

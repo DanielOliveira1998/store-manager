@@ -11,7 +11,6 @@ const findProductById = async (id) => {
 };
 
 const createProduct = async (name) => {
-  console.log('entrei'); 
   const product = await productsModel.create(name);
   return product;
 };
