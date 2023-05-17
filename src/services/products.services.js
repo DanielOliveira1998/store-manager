@@ -10,6 +10,11 @@ const findProductById = async (id) => {
   return product;
 };
 
+const updateProduct = async (id, name) => {
+  const update = await productsModel.update(id, name);
+  return update;
+};
+
 const createProduct = async (name) => {
   const product = await productsModel.create(name);
   return product;
@@ -21,4 +26,4 @@ const excludeProduct = async (productId) => {
   return deletedProduct;
 };
 
-module.exports = { findAllProducts, findProductById, createProduct, excludeProduct };
+module.exports = { findAllProducts, findProductById, createProduct, excludeProduct, updateProduct };

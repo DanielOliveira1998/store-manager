@@ -50,6 +50,18 @@ describe('Controller Test', () => {
       expect(res.status).to.have.been.calledWith(201);
       expect(res.json).to.have.been.calledWith({ id: 20, name: 'Novo produto' })
     })
+
+    it('Verifica se excludeProduct retorna status 204', async () => {
+      const req = {
+        params: 1,
+      }
+      const res = {}
+      res.status = sinon.stub().returns(res);
+      res.json = sinon.stub().returns();
+      sinon.stub(productSevice, 'excludeProduct').resolves(null);
+      await productController.excludeProduct(req, res);
+      expect(res.status).to.have.been.calledWith(204);
+    })
   });
   describe('Verificas erros', async () => {
     it('Verifica se listProducts retorna status 404', async () => {
@@ -57,15 +69,25 @@ describe('Controller Test', () => {
         params: { id: 1000 }
       };
       const res = {};
-
       res.status = sinon.stub().returns(res);
       res.json = sinon.stub().returns();
       sinon.stub(productSevice, 'findProductById').resolves(undefined);
       await productController.productById(req, res);
-      console.log('status', res.status);
       expect(res.status).to.have.been.calledWith(404);
       expect(res.json).to.have.been.calledWith({ message: 'Product not found' });
     });
+    it('Verifica se excludeProduct retorna status 404', async () => {
+      const req = {
+        params: 1,
+      }
+      const res = {}
+      res.status = sinon.stub().returns(res);
+      res.json = sinon.stub().returns();
+      sinon.stub(productSevice, 'excludeProduct').resolves(undefined);
+      await productController.excludeProduct(req, res);
+      expect(res.status).to.have.been.calledWith(404);
+
+    })
   })
 });
 

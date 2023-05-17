@@ -27,10 +27,11 @@ const create = async (name) => {
 };
 
 const update = async (id, name) => {
-    const changes = await connection.execute(
-      'UPDATE StoreManager.products SET name = ? where id = ?', [name, id],
+    const [{ affectedRows }] = await connection.execute(
+      'UPDATE StoreManager.products SET name = ? WHERE id = ?', [name, id],
     );
-  return changes;
+  console.log();
+  return affectedRows;
 };
 
 const exclude = async (productId) => {

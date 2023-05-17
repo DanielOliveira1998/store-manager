@@ -21,8 +21,10 @@ const addCreatedProduct = async (req, res) => {
 const updateList = async (req, res) => {
   const { name } = req.body;
   const { id } = req.params;
-  const result = await productService.updateProduct({ name, id });
-  if (!result) return res.status(404).json({ message: 'Product not found' });
+  await productService.updateProduct(id, name);
+  const product = await productService.findProductById(id);
+  if (!product) return res.status(404).json({ message: 'Product not found' });
+  return res.status(200).json({ id, name });
 };
 
 const excludeProduct = async (req, res) => {

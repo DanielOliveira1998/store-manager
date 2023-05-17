@@ -46,16 +46,16 @@
     "colId": "history",
     "containerId": "",
     "name": "http://localhost:3001/products",
-    "url": "http://localhost:3001/products",
-    "method": "POST",
+    "url": "http://localhost:3001/products/1",
+    "method": "PUT",
     "sortNum": 0,
     "created": "2023-05-16T22:41:47.405Z",
-    "modified": "2023-05-16T23:19:31.077Z",
+    "modified": "2023-05-17T21:06:30.724Z",
     "headers": [],
     "params": [],
     "body": {
       "type": "json",
-      "raw": "{\n    \"id\": 4,\n    \"name\": \"Martelo\"\n  }",
+      "raw": "{\n    \"name\": ''\n  }",
       "form": []
     },
     "tests": []
