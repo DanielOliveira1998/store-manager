@@ -23,4 +23,11 @@ describe('Sales Test', () => {
       expect(result).to.be.deep.equal(1);
     })
   })
+  describe('Verifica erro', async () => {
+    it('findProductById com id errado', async () => {
+      sinon.stub(salesModel, 'findAll').resolves(salesList[0]);
+      const result = await salesService.findSaleById(1000);
+      expect(result[0].length).to.be.equal(0);
+    });
+  });
 })

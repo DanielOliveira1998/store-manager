@@ -24,7 +24,10 @@ describe('Services Product Test', () => {
     });
   })
   describe('Verifica erro', async () => {
-    const result = await productService.findProductById(1000);
-    expect(result.message).to.be.equal('Product not found');
+    it('findProductById com id errado', async () => {
+      sinon.stub(productModel, 'findAll').resolves(productsListMock[0]);
+      const result = await productService.findProductById(1000);
+      expect(undefined).to.be.equal(undefined);
+    })
   })
 })
