@@ -4,7 +4,7 @@ const productModel = require('../../../src/models/products.models');
 const productService = require('../../../src/services/products.services');
 const productsListMock = require('../models/products.model.mock')
 
-describe('Services Test', () => {
+describe('Services Product Test', () => {
   describe('Verifica sucesso', () => {
     afterEach(() => sinon.restore())
     it('findAllProducts retorna todos os produtos', async () => {

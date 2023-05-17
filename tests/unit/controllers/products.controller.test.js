@@ -86,7 +86,6 @@ describe('Controller Test', () => {
       sinon.stub(productSevice, 'excludeProduct').resolves(undefined);
       await productController.excludeProduct(req, res);
       expect(res.status).to.have.been.calledWith(404);
-
     })
   })
 });
