@@ -1,14 +1,5 @@
 const salesModel = require('../models/sales.models');
 
-// const createSale = async (saleInfo) => {
-//   const promiseResolves = Promise.all(saleInfo.map((item) => {
-//     const salesInf = salesModel.referSaleToProduct(item.quantity, item.productId);
-//     console.log('sales', salesInf);
-//     return salesInf;
-//   }));
-//   return promiseResolves;
-// };
-
 const findAllSales = async () => {
   const saleList = await salesModel.findAll();
   return saleList;

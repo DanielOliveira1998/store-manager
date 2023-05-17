@@ -19,13 +19,15 @@ const validateDatabase = async (req, res, next) => {
   const productList = await productServices.findAllProducts();
   const idNotExiste = bodyInfo.find((item) => !productList
     .some((data) => data.id === item.productId));
-  // const idNotExiste = productList.some((item) => !bodyInfo
-  //   .some((data) => item.productId === data.id));
-  // console.log('database', idNotExiste);
   if (idNotExiste) {
     return res.status(404).json({ message: 'Product not found' });
   }
   next();
 };
+
+// findSaleIdValidation = async (req, res, next) => {
+//   const { id } = params;
+//   const result = await
+// };
 
 module.exports = { saleValidation, validateDatabase };
