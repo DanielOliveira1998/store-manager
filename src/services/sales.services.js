@@ -16,4 +16,10 @@ const createSale = async (saleInfo) => {
   return result;
 };
 
-module.exports = { createSale, findAllSales, findSaleById };
+const excludeSale = async (saleId) => {
+  const deletedSale = await salesModel.exclude(saleId);
+  if (deletedSale === 0) return undefined;
+  return deletedSale;
+};
+
+module.exports = { createSale, findAllSales, findSaleById, excludeSale };

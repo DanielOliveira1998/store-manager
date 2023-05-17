@@ -28,7 +28,6 @@ const updateList = async (req, res) => {
 const excludeProduct = async (req, res) => {
   const { id } = req.params;
   const result = await productService.excludeProduct(id);
-  console.log('exclude', result);
   if (result === undefined) return res.status(404).json({ message: 'Product not found' });
   return res.status(204).json();
 };

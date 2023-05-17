@@ -25,9 +25,4 @@ const validateDatabase = async (req, res, next) => {
   next();
 };
 
-// findSaleIdValidation = async (req, res, next) => {
-//   const { id } = params;
-//   const result = await
-// };
-
 module.exports = { saleValidation, validateDatabase };

@@ -39,4 +39,11 @@ const findById = async (saleId) => {
   return camelize(result);
 };
 
-module.exports = { referSaleToProduct, findAll, findById };
+const exclude = async (saleId) => {
+  const [{ affectedRows }] = await connection.execute(
+    'DELETE FROM StoreManager.sales WHERE id = ?', [saleId],
+  );
+  return affectedRows;
+};
+
+module.exports = { referSaleToProduct, findAll, findById, exclude };

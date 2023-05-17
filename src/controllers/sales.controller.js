@@ -19,4 +19,11 @@ const saleById = async (req, res) => {
   return res.status(200).json(result[0]);
 };
 
-module.exports = { addSaleProduct, listSales, saleById };
+const excludeSale = async (req, res) => {
+  const { id } = req.params;
+  const result = await saleService.excludeSale(id);
+  if (result === undefined) return res.status(404).json({ message: 'Sale not found' });
+  return res.status(204).json();
+};
+
+module.exports = { addSaleProduct, listSales, saleById, excludeSale };
