@@ -5,8 +5,6 @@ const createSale = async (saleInfo) => {
     const product = salesModel.referSaleToProduct(item.quantity, item.productId);
     return product;
   }));
-  // const promiseResolve = await Promise.all(data);
-  // console.log('data', promiseResolve);
 };
 
 // const createSale = async (saleInfo) => {
