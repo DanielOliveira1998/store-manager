@@ -15,4 +15,10 @@ const createProduct = async (name) => {
   return product;
 };
 
-module.exports = { findAllProducts, findProductById, createProduct };
+const excludeProduct = async (productId) => {
+  const deletedProduct = await productsModel.exclude(productId);
+  if (deletedProduct === 0) return undefined;
+  return deletedProduct;
+};
+
+module.exports = { findAllProducts, findProductById, createProduct, excludeProduct };
