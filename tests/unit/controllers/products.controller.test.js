@@ -7,7 +7,7 @@ const productSevice = require('../../../src/services/products.services');
 const productController = require('../../../src/controllers/products.controller');
 const productsListMock = require('../models/products.model.mock');
 
-describe('Controller Test', () => {
+describe('Controller Productes Test', () => {
   afterEach(() => sinon.restore())
   describe('Verifica sucessos', () => {
     it('Verifica se listProducts retorna status 200', async () => {
